@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const sigeupRoute = require('./api/routes/signup');
+const loginRoute = require('./api/routes/login');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
@@ -10,6 +11,7 @@ mongoose.connect('mongodb://randomansari:randomansari@randomansari-shard-00-00-6
 app.use(bodyParser.urlencoded({extended : false}));
 app.use(bodyParser.json());
 app.use('/signup',sigeupRoute);
+app.use('/login',loginRoute);
 app.use((req,res,next)=>{
   res.status(200).json({
     message: "It works"
